@@ -27,16 +27,26 @@ const getSalary = (id, callback) => {
 
 const id = 2;
 
-getEmployeeById(id)
-  .then((employee) => {
-    getSalary(id)
-      .then((salary) => {
-        console.log(salary);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+// getEmployeeById(id)
+//   .then((employee) => {
+//     getSalary(id)
+//       .then((salary) => {
+//         console.log(salary);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+
+let name;
+getEmployeeById(1)
+  .then( (employee) => {
+    name = employee.name;
+    return getSalary(employee.id)
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then( (salary) => console.log(name, salary.salary) )
+  .catch( (err) => console.log(err) );
